@@ -1,0 +1,12 @@
+{
+  "name": "docker-challenge",
+  "version": "1.0.0",
+  "description": "Docker workshop challenge - Task list with Redis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "redis": "^4.6.12"
+  }
+}
