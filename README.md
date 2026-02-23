@@ -13,8 +13,6 @@ git clone https://github.com/peroute/docker-workshop.git
 cd docker-workshop
 ```
 
-> **Don't have Git installed?** You can also download the repo as a ZIP file by clicking the green **"Code"** button on GitHub and selecting **"Download ZIP"**. Extract it and open the folder in your terminal.
-
 
 ## Prerequisites
 
