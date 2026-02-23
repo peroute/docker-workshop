@@ -5,6 +5,17 @@ Follow each section in order each one builds on the previous.
 
 ---
 
+## 🚀 Getting Started
+
+### Clone the Repo
+```bash
+git clone https://github.com/peroute/docker-workshop.git
+cd docker-workshop
+```
+
+> **Don't have Git installed?** You can also download the repo as a ZIP file by clicking the green **"Code"** button on GitHub and selecting **"Download ZIP"**. Extract it and open the folder in your terminal.
+
+
 ## Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed
