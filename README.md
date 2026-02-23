@@ -1,7 +1,7 @@
 # 🐳 Docker Hands-On Workshop
 
 Welcome! This repo contains everything you need to get hands-on with Docker.
-Follow each section in order — each one builds on the previous.
+Follow each section in order each one builds on the previous.
 
 ---
 
@@ -35,7 +35,7 @@ docker-workshop/
 
 ---
 
-## 01 — Hello Docker
+## 01 Hello Docker
 
 **Goal:** Run your first container and explore what's inside.
 
@@ -85,7 +85,7 @@ docker rm $(docker ps -a -q)   # Remove all stopped containers
 
 ---
 
-## 02 — Build Your Own Image
+## 02 Build Your Own Image
 
 **Goal:** Create a Docker image for a Python Flask app.
 
@@ -95,7 +95,7 @@ docker rm $(docker ps -a -q)   # Remove all stopped containers
 cd 02-build-image/app
 ```
 
-Check out `app.py` — it's a simple web server. Check `requirements.txt` — it lists the dependencies.
+Check out `app.py` it's a simple web server. Check `requirements.txt` it lists the dependencies.
 
 ### Step 2: Understand the Dockerfile
 
@@ -151,8 +151,8 @@ Open your browser: [http://localhost:5000](http://localhost:5000)
 You should see: **"Hello from Docker! 🐳"**
 
 Try the other endpoints:
-- [http://localhost:5000/info](http://localhost:5000/info) — shows container info
-- [http://localhost:5000/health](http://localhost:5000/health) — health check
+- [http://localhost:5000/info](http://localhost:5000/info) shows container info
+- [http://localhost:5000/health](http://localhost:5000/health) health check
 
 ### Step 6: Useful Commands
 
@@ -168,13 +168,13 @@ docker images                       # List all images
 ### 💡 What just happened?
 
 - You wrote a recipe (Dockerfile) that tells Docker how to build your app
-- `docker build` created an image — a snapshot of your app + all its dependencies
+- `docker build` created an image a snapshot of your app + all its dependencies
 - `docker run` created a running container from that image
-- Anyone with this Dockerfile can build and run the exact same app — no "works on my machine" problems!
+- Anyone with this Dockerfile can build and run the exact same app no "works on my machine" problems!
 
 ---
 
-## 03 — Volumes: Persistent Data
+## 03 Volumes: Persistent Data
 
 **Goal:** Understand how to keep data alive and share files between your machine and a container.
 
@@ -185,13 +185,13 @@ docker run -it ubuntu bash
 echo "important data" > /myfile.txt
 exit
 
-# Run a new container — the file is GONE
+# Run a new container the file is GONE
 docker run -it ubuntu bash
 cat /myfile.txt   # "No such file or directory"
 exit
 ```
 
-Containers are **ephemeral** — when they're removed, their data disappears.
+Containers are **ephemeral** when they're removed, their data disappears.
 
 ### Solution: Bind Mounts
 
@@ -216,15 +216,15 @@ docker run -d -p 8080:80 -v $(pwd)/site:/usr/share/nginx/html --name my-website 
 
 ### Step 3: See It Live
 
-Open [http://localhost:8080](http://localhost:8080) — you should see the website.
+Open [http://localhost:8080](http://localhost:8080) you should see the website.
 
 ### Step 4: Edit and Refresh
 
-Open `site/index.html` in your text editor. Change the heading text to your name. Save the file. **Refresh the browser** — your changes appear instantly!
+Open `site/index.html` in your text editor. Change the heading text to your name. Save the file. **Refresh the browser** your changes appear instantly!
 
 ### Step 5: Named Volumes (for Databases)
 
-Named volumes are managed by Docker — great for databases where you don't need direct file access.
+Named volumes are managed by Docker great for databases where you don't need direct file access.
 
 ```bash
 # Create a named volume
@@ -254,16 +254,16 @@ docker volume rm mydata
 
 | Type | Use Case | Example |
 |------|----------|---------|
-| **Bind Mount** | Development — share code between host and container | `-v $(pwd)/src:/app` |
-| **Named Volume** | Production — persist database data | `-v pgdata:/var/lib/postgresql/data` |
+| **Bind Mount** | Development share code between host and container | `-v $(pwd)/src:/app` |
+| **Named Volume** | Production persist database data | `-v pgdata:/var/lib/postgresql/data` |
 
 ---
 
-## 04 — Docker Compose: Multi-Container Apps
+## 04 Docker Compose: Multi-Container Apps
 
 **Goal:** Run a web app + database together using Docker Compose.
 
-Real apps don't run alone — they need databases, caches, queues, etc. Docker Compose lets you define and run multi-container applications.
+Real apps don't run alone they need databases, caches, queues, etc. Docker Compose lets you define and run multi-container applications.
 
 ### Step 1: Look at the Project
 
@@ -301,17 +301,17 @@ Open `docker-compose.yml` and read through it. Notice:
 docker compose up --build
 ```
 
-Watch the logs — you'll see both the web app and database starting up.
+Watch the logs you'll see both the web app and database starting up.
 
 ### Step 4: Test It
 
-Open [http://localhost:5000](http://localhost:5000) — you should see a visitor counter.
+Open [http://localhost:5000](http://localhost:5000) you should see a visitor counter.
 
 Try these endpoints:
-- [http://localhost:5000](http://localhost:5000) — increments and shows visit count
-- [http://localhost:5000/visitors](http://localhost:5000/visitors) — shows all visits with timestamps
+- [http://localhost:5000](http://localhost:5000) increments and shows visit count
+- [http://localhost:5000/visitors](http://localhost:5000/visitors) shows all visits with timestamps
 
-Refresh a few times — the count goes up because it's stored in PostgreSQL!
+Refresh a few times the count goes up because it's stored in PostgreSQL!
 
 ### Step 5: Useful Compose Commands
 
@@ -349,11 +349,11 @@ docker compose down -v         # Also removes volumes (deletes data!)
 
 ---
 
-## 05 — Networking: Containers Talking to Each Other
+## 05 Networking: Containers Talking to Each Other
 
 **Goal:** Understand how containers communicate on Docker networks.
 
-### Step 1: The Default Behavior — Isolation
+### Step 1: The Default Behavior Isolation
 
 Containers can't talk to each other by default:
 
@@ -362,7 +362,7 @@ Containers can't talk to each other by default:
 docker run -d --name container-a nginx
 docker run -d --name container-b nginx
 
-# Try to ping from A to B — FAILS
+# Try to ping from A to B FAILS
 docker exec container-a ping -c 2 container-b
 
 # Clean up
@@ -393,7 +393,7 @@ docker run -d --name app2 --network workshop-net -p 3002:3000 app2
 
 Open [http://localhost:3002](http://localhost:3002)
 
-App2 calls App1 internally using the container name `app1` — no ports needed between containers on the same network!
+App2 calls App1 internally using the container name `app1` no ports needed between containers on the same network!
 
 ### Step 5: Verify the Network
 
@@ -401,7 +401,7 @@ App2 calls App1 internally using the container name `app1` — no ports needed b
 # See all networks
 docker network ls
 
-# Inspect the network — see which containers are connected
+# Inspect the network see which containers are connected
 docker network inspect workshop-net
 
 # Ping between containers by name
@@ -417,15 +417,15 @@ docker network rm workshop-net
 
 ### 💡 Key Takeaways
 
-- Containers are **isolated by default** — they can't reach each other
+- Containers are **isolated by default** they can't reach each other
 - Put containers on the **same network** to let them communicate
 - Containers find each other by **name** (DNS), not IP address
-- Docker Compose does this **automatically** — every service is on the same network
+- Docker Compose does this **automatically** every service is on the same network
 - Port mapping (`-p`) is only needed for **external access** (your browser), not container-to-container
 
 ---
 
-## 06 — Challenge: Put It All Together! 🏆
+## 06 Challenge: Put It All Together! 🏆
 
 **Goal:** Dockerize a Node.js app with Redis on your own.
 
@@ -442,7 +442,7 @@ You're given a working Node.js app that uses Redis as a cache. Your job:
 cd 06-challenge/app
 ```
 
-Look at `server.js` — it's a simple task list API that stores tasks in Redis.
+Look at `server.js` it's a simple task list API that stores tasks in Redis.
 
 **Hints:**
 - The Node app runs on port **3000**
@@ -517,7 +517,7 @@ You've learned:
 ### Next Steps
 
 - [Docker Official Docs](https://docs.docker.com/)
-- [Docker Hub](https://hub.docker.com/) — explore official images
+- [Docker Hub](https://hub.docker.com/) explore official images
 - Multi-stage builds for smaller images
 - Docker in CI/CD pipelines
 - Deploying to the cloud with Docker
