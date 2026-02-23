@@ -127,7 +127,6 @@ CMD ["python", "app.py"]
 ### Step 3: Build the Image
 
 ```bash
-cd 02-build-image
 docker build -t myapp .
 ```
 
@@ -206,10 +205,13 @@ cd 03-volumes/site
 There's a simple `index.html` file.
 
 ### Step 2: Run Nginx with a Bind Mount
-
+If linux/Mac:
 ```bash
-cd 03-volumes
 docker run -d -p 8080:80 -v $(pwd)/site:/usr/share/nginx/html --name my-website nginx
+```
+If windows
+```bash
+docker run -d -p 8080:80 -v ${PWD}:/usr/share/nginx/html --name my-website nginx
 ```
 
 - `-v $(pwd)/site:/usr/share/nginx/html` mounts the `site/` folder into the container
