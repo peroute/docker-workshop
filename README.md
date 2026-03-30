@@ -3,6 +3,8 @@
 Welcome! This repo contains everything you need to get hands-on with Docker.
 Follow each section in order each one builds on the previous.
 
+Link of the presentation: https://docs.google.com/presentation/d/1emz5fKH47TOXZV8goAlcwutcOvy8vzNU/edit?usp=sharing&ouid=117665794345132368977&rtpof=true&sd=true
+
 ---
 
 ## 🚀 Getting Started
